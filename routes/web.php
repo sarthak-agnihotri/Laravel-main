@@ -11,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EvenOddController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\HomeController;
 
 Route::get('/d', function () {
     return "Welcome to the dashboard!";
@@ -400,4 +401,24 @@ Add middleware check (?access=yes)*/
 Route::prefix('shop')->middleware('check.access')->group(function(){
     Route::get('/pages',[PageController::class,'index'])->name('shop.pages');
     Route::get('/pages/{id}',[PageController::class,'show'])->name('shop.pages.show');
+});
+//Template inheritance
+Route::get('/template',function(){
+    return view('template');
+});
+//Single action controller
+Route::get('/single-action',HomeController::class);
+//secure route
+Route::get('/security',function(){
+if(request()->query('access') !== 'yes'){
+    return redirect('/no-access')->with('error','Access denied');
+}else{
+    return redirect('/true')->with('success','Access granted');
+}
+});
+Route::get('/no-access',function(){
+    return view('no-access');
+});
+Route::get('/true',function(){
+    return view('security');
 });

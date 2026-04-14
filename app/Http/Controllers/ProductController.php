@@ -42,6 +42,7 @@ class ProductController extends Controller
     public function show(string $id)
     {
         //
+        
         $product=[
             'id'=>$id,
             'name'=>'Product '.$id,
