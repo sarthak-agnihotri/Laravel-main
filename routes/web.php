@@ -422,3 +422,29 @@ Route::get('/no-access',function(){
 Route::get('/true',function(){
     return view('security');
 });
+
+
+//create a route and dispaly a message based on the language stored in the cookie
+//create a method to retrieve the preferred_language cookie and show a message like: If the language is en, display:"Welcome"
+//Expected output
+//If the preferred_language cookie is set to fr, display: "Binevenue"
+//If no cookie is set the page should prompt: Please set your preferred language.
+Route::get('/set-language/{lang}', function ($lang) {
+    return redirect('/language')
+        ->withCookie(cookie('preferred_language', $lang, 60));
+});
+
+Route::get('/language', function (Request $request) {
+
+    $lang = $request->cookie('preferred_language');
+
+    if ($lang == 'en') {
+        $message = "Welcome";
+    } elseif ($lang == 'fr') {
+        $message = "Bienvenue";
+    } else {
+        $message = "Please set your preferred language.";
+    }
+
+    return view('language', compact('message'));
+});
