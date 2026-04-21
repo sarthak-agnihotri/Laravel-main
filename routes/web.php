@@ -429,7 +429,7 @@ Route::get('/true',function(){
 //Expected output
 //If the preferred_language cookie is set to fr, display: "Binevenue"
 //If no cookie is set the page should prompt: Please set your preferred language.
-Route::get('/set-language/{lang}', function ($lang) {
+/*Route::get('/set-language/{lang}', function ($lang) {
     return redirect('/language')
         ->withCookie(cookie('preferred_language', $lang, 60));
 });
@@ -447,4 +447,5 @@ Route::get('/language', function (Request $request) {
     }
 
     return view('language', compact('message'));
-});
+});*/
+
