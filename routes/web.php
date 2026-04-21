@@ -311,6 +311,9 @@ Route::get('/dashboard',function(){
         'full'=> url()->full(),
         'path'=>request()->path(),
         'current-url'=>request()->url(),
+        'full-url'=>request()->fullUrl(),
+        'previous-url'=>url()->previous(),
+        'url'=>url('/home',['id'=>5])
     ];
 });
 
