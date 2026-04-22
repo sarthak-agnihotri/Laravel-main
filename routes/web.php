@@ -452,3 +452,21 @@ Route::get('/language', function (Request $request) {
     return view('language', compact('message'));
 });*/
 
+//form
+Route::get('/dashboard',function(Request $request){
+    return response([
+        'all'=>$request->all(),
+        'name'=>$request->name,
+        'age'=>$request->input('age'),
+        'age-course'=>$request->only(['age','course']),
+        'except'=>$request->except('age'),
+        'has'=>$request->has('name')?'Name is present':'Name is not present',
+        'input'=>$request->input('age',13),
+        'filled'=>$request->filled('name'),
+        'isMethod'=>$request->isMethod('post')?'This is a POST request':'This is not a POST request',
+        'url'=>$request->url(),
+        'fullUrl'=>$request->fullUrl(),
+        'path'=>$request->path(),
+        'headers'=>$request->header('Authorization'),
+    ]);
+});
