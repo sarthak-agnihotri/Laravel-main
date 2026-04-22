@@ -12,6 +12,7 @@ use App\Http\Controllers\EvenOddController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FormController;
 
 Route::get('/d', function () {
     return "Welcome to the dashboard!";
@@ -470,3 +471,6 @@ Route::get('/dashboard',function(Request $request){
         'headers'=>$request->header('Authorization'),
     ]);
 });
+
+Route::get('/get-form',[FormController::class,'showForm']);
+Route::post('/submit-form',[FormController::class,'handleForm']);
