@@ -14,7 +14,8 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\FileController;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
 
 Route::get('/d', function () {
     return "Welcome to the dashboard!";
@@ -481,3 +482,8 @@ Route::post('/submit-form',[FormController::class,'handleForm']);
 Route::get('/upload-file',[FileController::class,'showForm']);
 Route::post('/upload-file',[FileController::class,'handleFileUpload']);
 
+//mail
+Route::get('/email-sent',function(){
+    Mail::to('ishikaishika1603@gmail.com')->send(new TestMail());
+    return "Email sent successfully!";
+});
