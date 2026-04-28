@@ -15,6 +15,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\FileController;
 
+
 Route::get('/d', function () {
     return "Welcome to the dashboard!";
 })->middleware('auth');
