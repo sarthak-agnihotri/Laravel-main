@@ -479,3 +479,4 @@ Route::post('/submit-form',[FormController::class,'handleForm']);
 //File uploading
 Route::get('/upload-file',[FileController::class,'showForm']);
 Route::post('/upload-file',[FileController::class,'handleFileUpload']);
+
