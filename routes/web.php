@@ -487,3 +487,23 @@ Route::get('/email-sent',function(){
     Mail::to('ishikaishika1603@gmail.com')->send(new TestMail());
     return "Email sent successfully!";
 });
+
+//session
+Route::get('/session-data',function(Request $request){
+    return [
+        'put'=>$request->session()->put('name','sarthak'),
+        'put-multiple'=>$request->session()->put(['age'=>25, 'city'=>'New York', 'fruits'=>[]]),
+        'session'=>session('city','jalandhar'),
+        'push'=>$request->session()->push('fruits','apple'),
+
+    ];
+});
+
+//session now
+Route::get('/set',function(Request $request){
+    $request->session()->now('message','This is a flash message');
+    return redirect('/now-gwt');
+});
+Route::get('/now-gwt',function(Request $request){
+    return view('now');
+});
