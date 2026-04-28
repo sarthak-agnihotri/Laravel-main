@@ -13,6 +13,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\FileController;
 
 Route::get('/d', function () {
     return "Welcome to the dashboard!";
@@ -474,3 +475,7 @@ Route::get('/dashboard',function(Request $request){
 
 Route::get('/get-form',[FormController::class,'showForm']);
 Route::post('/submit-form',[FormController::class,'handleForm']);
+
+//File uploading
+Route::get('/upload-file',[FileController::class,'showForm']);
+Route::post('/upload-file',[FileController::class,'handleFileUpload']);
