@@ -16,6 +16,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
+use Illuminate\Support\Facades\App;
 
 Route::get('/d', function () {
     return "Welcome to the dashboard!";
@@ -507,3 +508,10 @@ Route::get('/set',function(Request $request){
 Route::get('/now-gwt',function(Request $request){
     return view('now');
 });
+
+//lang
+Route::get('/lang/{locale}',function($locale){
+    App::setLocale($locale);
+    return view('langcheck');
+});
+
