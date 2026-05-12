@@ -521,25 +521,25 @@ Route::get('/now-gwt',function(Request $request){
 //     return view('langcheck');
 // });
 
-Route::get('/homepage', function () {
-    return view('homepage');
-});
+// Route::get('/homepage', function () {
+//     return view('homepage');
+// });
 
-Route::get('/aboutpage', function () {
-    return view('aboutpage');
-});
+// Route::get('/aboutpage', function () {
+//     return view('aboutpage');
+// });
 
 
-Route::get('/lang/{locale}', function ($locale) {
+// Route::get('/lang/{locale}', function ($locale) {
 
-    if (!in_array($locale, ['en', 'hi', 'pa'])) {
-        abort(400);
-    }
+//     if (!in_array($locale, ['en', 'hi', 'pa'])) {
+//         abort(400);
+//     }
 
-    session(['locale' => $locale]);
+//     session(['locale' => $locale]);
 
-    return redirect()->back();
-});
+//     return redirect()->back();
+// });
 
 //form route
 Route::get('/form', function () {
@@ -549,4 +549,7 @@ Route::get('/show-form', [FormController::class, 'showForm']);
 Route::post('/submit-form', [FormController::class, 'submitform']);
 
 //Resource controller for Product
-Route::resource('products', Product1Controller::class);
+//Route::resource('products', Product1Controller::class);
+
+//Form Validation
+//inline validation

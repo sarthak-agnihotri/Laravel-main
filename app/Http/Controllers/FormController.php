@@ -23,7 +23,10 @@ class FormController extends Controller
     }
     public function submitform(Request $request)
     {
-        print_r($request->all());
+        $request->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+        ]);
         return "Form submitted successfully!";
     }
 }
