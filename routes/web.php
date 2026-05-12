@@ -478,8 +478,8 @@ Route::get('/dashboard',function(Request $request){
     ]);
 });
 
-Route::get('/get-form',[FormController::class,'showForm']);
-Route::post('/submit-form',[FormController::class,'handleForm']);
+// Route::get('/get-form',[FormController::class,'showForm']);
+// Route::post('/submit-form',[FormController::class,'handleForm']);
 
 //File uploading
 Route::get('/upload-file',[FileController::class,'showForm']);
