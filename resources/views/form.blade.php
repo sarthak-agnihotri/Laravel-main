@@ -6,8 +6,9 @@
     <title>Form</title>
 </head>
 <body>
-    <form action="/submit-form" method="POST">
+    <form action="/products/12" method="post">
         @csrf
+        @method('put')
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
         <br><br>

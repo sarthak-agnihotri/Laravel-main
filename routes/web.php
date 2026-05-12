@@ -14,6 +14,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\Product1Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\App;
@@ -546,3 +547,6 @@ Route::get('/form', function () {
 });
 Route::get('/show-form', [FormController::class, 'showForm']);
 Route::post('/submit-form', [FormController::class, 'submitform']);
+
+//Resource controller for Product
+Route::resource('products', Product1Controller::class);
