@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Rules\checkUpperCase;
 
 class FormController extends Controller
 {
@@ -24,7 +25,7 @@ class FormController extends Controller
     public function submitform(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:3',
+            'name' => ['required','min:3','max:6', new checkUpperCase],
             'email' => 'required|email',
         ],
         [//custom error messages
