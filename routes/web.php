@@ -539,3 +539,8 @@ Route::get('/lang/{locale}', function ($locale) {
 
     return redirect()->back();
 });
+
+//form route
+Route::get('/form', function () {
+    return view('form');
+});
