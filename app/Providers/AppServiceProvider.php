@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\App;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -19,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::share('siteName','My Laravel Website');//Use View::share() in a Service Provider to make variables globally available in all Blade templates.
+        //View::share('siteName','My Laravel Website');//Use View::share() in a Service Provider to make variables globally available in all Blade templates.
+        App::setLocale(session('locale', 'en'));
     }
 }

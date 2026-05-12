@@ -17,6 +17,8 @@ use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\App;
+use App\Http\Middleware\Setlocale;
+use Illuminate\Support\Facades\Session;
 
 Route::get('/d', function () {
     return "Welcome to the dashboard!";
@@ -510,8 +512,30 @@ Route::get('/now-gwt',function(Request $request){
 });
 
 //lang
-Route::get('/lang/{locale}',function($locale){
-    App::setLocale($locale);
-    return view('langcheck');
+// Route::get('/lang/{locale}',function($locale){
+//     Session::put('locale',$locale);;
+//     return redirect('language');
+// });
+// Route::get('/language',function(){
+//     return view('langcheck');
+// });
+
+Route::get('/homepage', function () {
+    return view('homepage');
 });
 
+Route::get('/aboutpage', function () {
+    return view('aboutpage');
+});
+
+
+Route::get('/lang/{locale}', function ($locale) {
+
+    if (!in_array($locale, ['en', 'hi', 'pa'])) {
+        abort(400);
+    }
+
+    session(['locale' => $locale]);
+
+    return redirect()->back();
+});

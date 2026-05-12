@@ -24,9 +24,10 @@ return Application::configure(basePath: dirname(__DIR__))
         // $middleware->alias([
         //     'check.user.credentials'=>\App\Http\Middleware\CheckUserCredentials::class,
         // ]);
-        $middleware->alias([
-            'check.access'=>\App\Http\Middleware\checkAccess::class,
-        ]);
+        // $middleware->alias([
+        //     'check.access'=>\App\Http\Middleware\checkAccess::class,
+        // ]);
+        $middleware->web(append:[\App\Http\Middleware\Setlocale::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
