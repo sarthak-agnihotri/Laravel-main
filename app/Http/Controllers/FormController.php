@@ -26,6 +26,12 @@ class FormController extends Controller
         $request->validate([
             'name' => 'required|min:3',
             'email' => 'required|email',
+        ],
+        [//custom error messages
+            'name.required' => 'Name is required',
+            'name.min' => 'Name must be at least 3 characters',
+            'email.required' => 'Email is required',
+            'email.email' => 'Email must be a valid email address',
         ]);
         return "Form submitted successfully!";
     }
