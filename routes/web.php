@@ -544,3 +544,5 @@ Route::get('/lang/{locale}', function ($locale) {
 Route::get('/form', function () {
     return view('form');
 });
+Route::get('/show-form', [FormController::class, 'showForm']);
+Route::post('/submit-form', [FormController::class, 'submitform']);

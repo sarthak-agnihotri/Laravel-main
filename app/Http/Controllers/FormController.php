@@ -23,6 +23,7 @@ class FormController extends Controller
     }
     public function submitform(Request $request)
     {
+        print_r($request->all());
         return "Form submitted successfully!";
     }
 }

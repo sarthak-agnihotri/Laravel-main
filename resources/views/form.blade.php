@@ -6,7 +6,7 @@
     <title>Form</title>
 </head>
 <body>
-    <form action="/submit" method="POST">
+    <form action="/submit-form" method="POST">
         @csrf
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
