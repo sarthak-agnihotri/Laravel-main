@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Rules\checkUpperCase;
+use App\Http\Requests\StoreUserRequest;
 
 class FormController extends Controller
 {
@@ -22,18 +23,24 @@ class FormController extends Controller
     {
         return view('form');
     }
-    public function submitform(Request $request)
+    // public function submitform(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => ['required','min:3','max:6', new checkUpperCase],
+    //         'email' => 'required|email',
+    //     ],
+    //     [//custom error messages
+    //         'name.required' => 'Name is required',
+    //         'name.min' => 'Name must be at least 3 characters',
+    //         'email.required' => 'Email is required',
+    //         'email.email' => 'Email must be a valid email address',
+    //     ]);
+    //     return "Form submitted successfully!";
+    // }
+    
+    public function submitform(StoreUserRequest $request)
     {
-        $request->validate([
-            'name' => ['required','min:3','max:6', new checkUpperCase],
-            'email' => 'required|email',
-        ],
-        [//custom error messages
-            'name.required' => 'Name is required',
-            'name.min' => 'Name must be at least 3 characters',
-            'email.required' => 'Email is required',
-            'email.email' => 'Email must be a valid email address',
-        ]);
+        // The validation rules from StoreUserRequest will be automatically applied
         return "Form submitted successfully!";
     }
 }
