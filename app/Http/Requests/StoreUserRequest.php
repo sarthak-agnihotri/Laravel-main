@@ -78,7 +78,7 @@ class StoreUserRequest extends FormRequest
             'student_gender.required' => 'Student gender is required',
             'student_dob.required' => 'Student date of birth is required',
             'student_dob.date' => 'Student date of birth must be a valid date',
-            'student_age.required' => 'Student age is required',
+            'student_age.required' => 'Student must be at least 17 years old',
             'student_age.integer' => 'Student age must be an integer',
             'student_age.min' => 'Student age must be a positive number',
             'student_address.required' => 'Student address is required',
