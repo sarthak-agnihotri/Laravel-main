@@ -29,4 +29,22 @@ class StoreUserRequest extends FormRequest
             //
         ];
     }
+    public function attributes()
+    {
+        return [
+            'name' => 'user name',
+            'email' => 'email address',
+        ];
+    }
+    // public function messages()
+    // {
+    //     return [
+    //         'name.required' => 'Name is required',
+    //         'name.min' => 'Name must be at least 3 characters',
+    //         'name.max' => 'Name must not exceed 6 characters',
+    //         'name.alpha' => 'Name must contain only letters',
+    //         'email.required' => 'Email is required',
+    //         'email.email' => 'Email must be a valid email address',
+    //     ];
+    // }
 }
