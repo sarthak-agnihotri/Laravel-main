@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\checkUpperCase;
 
 class StoreUserRequest extends FormRequest
 {
@@ -23,6 +24,8 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => ['required','min:3','max:6','alpha',new checkUpperCase],
+            'email' => ['required','email']
             //
         ];
     }
