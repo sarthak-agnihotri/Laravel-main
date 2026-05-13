@@ -15,6 +15,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\Product1Controller;
+use App\Http\Controllers\FormsController;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\App;
@@ -553,3 +554,6 @@ Route::post('/submit-form', [FormController::class, 'submitform']);
 
 //Form Validation
 //inline validation
+//Final Form
+Route::get('/view-form', [FormsController::class, 'showForm']);
+Route::post('/upload-form', [FormsController::class, 'submitForm']);
