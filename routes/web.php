@@ -21,6 +21,9 @@ use App\Mail\TestMail;
 use Illuminate\Support\Facades\App;
 use App\Http\Middleware\Setlocale;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\MovieController;
+use App\Models\Movie;
 
 Route::get('/d', function () {
     return "Welcome to the dashboard!";
@@ -558,7 +561,7 @@ Route::post('/submit-form', [FormController::class, 'submitform']);
 Route::get('/view-form', [FormsController::class, 'showForm']);
 Route::post('/upload-form', [FormsController::class, 'submitForm']);
 //Database
-Route::get('/insert',function(){
+/*Route::get('/insert',function(){
     DB::table('movies')->insert([
     [
         'movie_name'=>'Inception',
@@ -580,7 +583,7 @@ Route::get('/insert',function(){
     ]
     ]);
     return 'Data inserted successfully';
-});
+});*/
 //Read data
 Route::get('/read-all-data',function(){
     return $movies=DB::table('movies')->orderBy('movie_name')->get();
@@ -599,6 +602,37 @@ Route::get('/update-data',function(){
 });
 //Delete data
 Route::get('/delete-data',function(){
-    DB::table('movies')->where('id',2)->delete();
+    DB::table('movies')->where('id',1)->delete();
     return 'Data deleted successfully';
+});
+//ORM Eloquent method
+Route::get('/insert',function(){
+    Movie::create(
+[
+        'movie_name'=>'Inception',
+        'rating'=>9,
+        'description'=>'A mind-bending thriller about dreams within dreams.',
+        'release_date'=>'2010-07-16',
+        'category'=>'Sci-Fi',
+        'created_at'=>now(),
+        'updated_at'=>now(),
+    ]
+    );
+    return 'Data inserted successfully';
+});
+//Read all data using Eloquent
+Route::get('/read-all',function(){
+    return Movie::all();
+});
+//Read specific data using Eloquent
+Route::get('/read-specific',function(){
+    return Movie::where('id',2)->get();
+});
+//Update data using Eloquent
+Route::get('/update',function(){
+    $movie=Movie::find(2);
+    $movie->rating=10;
+    $movie->updated_at=now();
+    $movie->save();
+    return 'Data updated successfully';
 });
