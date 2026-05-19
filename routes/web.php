@@ -557,3 +557,48 @@ Route::post('/submit-form', [FormController::class, 'submitform']);
 //Final Form
 Route::get('/view-form', [FormsController::class, 'showForm']);
 Route::post('/upload-form', [FormsController::class, 'submitForm']);
+//Database
+Route::get('/insert',function(){
+    DB::table('movies')->insert([
+    [
+        'movie_name'=>'Inception',
+        'rating'=>9,
+        'description'=>'A mind-bending thriller about dreams within dreams.',
+        'release_date'=>'2010-07-16',
+        'category'=>'Sci-Fi',
+        'created_at'=>now(),
+        'updated_at'=>now(),
+    ],
+    [
+        'movie_name'=>'The Shawshank Redemption',
+        'rating'=>10,
+        'description'=>'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
+        'release_date'=>'1994-09-22',
+        'category'=>'Drama',
+        'created_at'=>now(),
+        'updated_at'=>now(),
+    ]
+    ]);
+    return 'Data inserted successfully';
+});
+//Read data
+Route::get('/read-all-data',function(){
+    return $movies=DB::table('movies')->orderBy('movie_name')->get();
+});
+//Read spesific data
+Route::get('/read-specific-data',function(){
+    return $movie=DB::table('movies')->where('id',2)->get();
+});
+//Update data
+Route::get('/update-data',function(){
+    DB::table('movies')->where('id',1)->update([
+        'rating'=>8,
+        'updated_at'=>now(),
+    ]);
+    return 'Data updated successfully';
+});
+//Delete data
+Route::get('/delete-data',function(){
+    DB::table('movies')->where('id',2)->delete();
+    return 'Data deleted successfully';
+});
