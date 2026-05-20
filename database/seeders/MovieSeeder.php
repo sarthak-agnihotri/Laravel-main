@@ -15,7 +15,7 @@ class MovieSeeder extends Seeder
     public function run(): void
     {//php artisan db:seed --class=MovieSeeder
         //add two movies data
-        DB::table('movies')->insert([
+        /*DB::table('movies')->insert([
             [
                 'movie_name'=>'Inception',
                 'rating'=>9,
@@ -34,6 +34,9 @@ class MovieSeeder extends Seeder
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ]
-        ]);
+        ]);*/
+        //using factory to insert data into database
+        Movie::factory()->count(5)->create();
+        //make() method will create the model instance but will not save it to the database, while create() method will create the model instance and save it to the database.
     }
 }

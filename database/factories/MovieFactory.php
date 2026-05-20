@@ -19,6 +19,7 @@ class MovieFactory extends Factory
     {
         //php artisan make:factory MovieFactory
         //php artisan tinker to run the factory and insert data into database
+        //> \App\Models\Movie::factory()->count(10)->create() random data for 10 movies
         return [
             'movie_name' => fake()->words(2, true),
             'rating' => fake()->numberBetween(1, 10),
