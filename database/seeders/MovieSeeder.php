@@ -13,7 +13,7 @@ class MovieSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-    {
+    {//php artisan db:seed --class=MovieSeeder
         //add two movies data
         DB::table('movies')->insert([
             [

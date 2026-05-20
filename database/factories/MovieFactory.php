@@ -17,8 +17,10 @@ class MovieFactory extends Factory
      */
     public function definition(): array
     {
+        //php artisan make:factory MovieFactory
+        //php artisan tinker to run the factory and insert data into database
         return [
-            'movie_name' => fake()->sentence(2),
+            'movie_name' => fake()->words(2, true),
             'rating' => fake()->numberBetween(1, 10),
             'description' => fake()->paragraph(),
             'release_date' => fake()->date(),
