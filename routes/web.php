@@ -609,11 +609,11 @@ Route::get('/delete-data',function(){
 Route::get('/insert',function(){
     Movie::create(
 [
-        'movie_name'=>'Inception',
+        'movie_name'=>'3-idiots',
         'rating'=>9,
-        'description'=>'A mind-bending thriller about dreams within dreams.',
-        'release_date'=>'2010-07-16',
-        'category'=>'Sci-Fi',
+        'description'=>'A comedy-drama about three engineering students and their journey through college.',
+        'release_date'=>'2009-12-25',
+        'category'=>'action',
         'created_at'=>now(),
         'updated_at'=>now(),
     ]
@@ -635,11 +635,16 @@ Route::get('/update',function(){
     //     'rating'=>10,
     //     'updated_at'=>now(),
     // ]);
-    $movie=Movie::find(8);
-    $movie->rating=99;
+    $movie=Movie::find(9);
+    $movie->category='comedy';
     $movie->updated_at=now();
     $movie->save();
     return 'Data updated successfully';
 });
 
-//
+//Delete row from a table using Eloquent
+Route::get('/delete',function(){
+    $movie=Movie::find(8);
+    $movie->delete();
+    return 'Data deleted successfully';
+});
