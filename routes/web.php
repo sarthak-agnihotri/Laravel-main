@@ -626,13 +626,20 @@ Route::get('/read-all',function(){
 });
 //Read specific data using Eloquent
 Route::get('/read-specific',function(){
-    return Movie::where('id',2)->get();
+    // return Movie::where('id',2)->get();
+    return Movie::latest()->get();
 });
 //Update data using Eloquent
 Route::get('/update',function(){
-    $movie=Movie::find(2);
-    $movie->rating=10;
+    // Movie::where('id',8)->update([
+    //     'rating'=>10,
+    //     'updated_at'=>now(),
+    // ]);
+    $movie=Movie::find(8);
+    $movie->rating=99;
     $movie->updated_at=now();
     $movie->save();
     return 'Data updated successfully';
 });
+
+//
